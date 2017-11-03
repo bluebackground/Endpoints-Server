@@ -32,22 +32,22 @@ module.exports = (app) => {
 
   app
     .route('/lists/:listID')
-    .get(listController.readList)
+    .get(listController.findList)
     .put(listController.updateList)
     .delete(listController.deleteList);
 
   // Cards
-  app
-    .route('/cards')
-    .get(cardController.readCards)
-    .post(cardController.createCard)
-    .delete(cardController.deleteCards);
-
-  app
-    .route('/cards/:cardID')
-    .get(cardController.readCard)
-    .put(cardController.updateCard)
-    .delete(cardController.deleteCard);
+  // app
+  //   .route('/cards')
+  //   .get(cardController.readCards)
+  //   .post(cardController.createCard)
+  //   .delete(cardController.deleteCards);
+  //
+  // app
+  //   .route('/cards/:cardID')
+  //   .get(cardController.readCard)
+  //   .put(cardController.updateCard)
+  //   .delete(cardController.deleteCard);
 
   // Users
   app

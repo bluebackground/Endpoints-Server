@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const BoardSchema = new mongoose.Schema({
   owner: {
-    type: mongoose.Types.ObjectID,
+    type: mongoose.Types.ObjectId,
     ref: 'users',
     required: true,
   },
@@ -16,12 +16,12 @@ const BoardSchema = new mongoose.Schema({
     maxlength: 800,
   },
   members: {
-    type: [mongoose.Types.ObjectID],
+    type: [mongoose.Types.ObjectId],
     ref: 'users',
     default: []
   },
   lists: {
-    type: [mongoose.Types.ObjectID],
+    type: [mongoose.Types.ObjectId],
     ref: 'lists',
     default: []
   }
