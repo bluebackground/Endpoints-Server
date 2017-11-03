@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const {
   STATUS_USER_ERROR,
   STATUS_SERVER_ERROR
@@ -8,6 +10,10 @@ function validateStringInput(str) {
   if (str === undefined) return false;
   if (typeof str !== 'string') return false;
   return true;
+}
+
+function validateId(id) {
+  return;
 }
 
 function handleInvalidInput(res) {

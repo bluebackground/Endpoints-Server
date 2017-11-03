@@ -18,21 +18,21 @@ const LIST_ROUTE = '/lists/:listID';
 const listsArray = [{
   title: 'Title1', // Create constants for this
   cards: [],
-  parentBoard: 'StringId'
+  parentBoard: '59fcd2f0b6090b1f441093eb'
 }, {
   title: 'Title2',
   cards: [],
-  parentBoard: 'StringId'
+  parentBoard: '59fcd2f0b6090b1f441093eb'
 }, {
   title: 'Title3',
   cards: [],
-  parentBoard: 'StringId'
+  parentBoard: '59fcd2f0b6090b1f441093eb'
 }]
 
 const newList = {
   title: "Title4",
   cards: [],
-  parentBoard: "StringID"
+  parentBoard: "59fcd2f0b6090b1f441093eb"
 }
 
 describe('API Endpoints for /lists', () => {
@@ -75,7 +75,7 @@ describe('API Endpoints for /lists', () => {
   });
 
   describe('[POST] /lists', () => {
-    it.skip('should create a list on /lists POST', (done) => {
+    it.skip('should create a new list', (done) => {
       chai.request(server)
         .post('/lists')
         .send(newList)
@@ -86,7 +86,7 @@ describe('API Endpoints for /lists', () => {
           expect(res.body).to.have.property('parentBoard');
           expect(res.body).to.have.property('title');
           expect(res.body.title).to.be.a('string');
-          expect(res.body.title).to.equal('Title1');
+          expect(res.body.title).to.equal('Title4');
           done();
         });
     });
@@ -97,32 +97,36 @@ describe('API Endpoints for /lists', () => {
   });
 
   describe('[GET] /lists/:listID', () => {
-    // it.skip('should return a SINGLE list on /lists/:listID GET', (done) => {
-    // TODO: Need to save a new list to the database
-    // TODO: get Id and search for it
+    it.skip('should return a SINGLE list on /lists/:listID GET', (done) => {
+      // TODO: Need to save a new list to the database
+      // TODO: get Id and search for it
 
-    chai.request(server)
-      .get('/lists')
-      .end((error, response) => {
-        if (error) return done();
-        const list = response[0];
+      chai.request(server)
+        .get('/lists')
+        .end((error, response) => {
+          if (error) return done();
+          const list = response[0];
 
-        chai.request(server)
-          .get(`/lists/${list._id}`)
-          .end((err, res) => {
-            expect(res.status).to.be(200);
-            expect(res.body).to.be.an('object');
-            expect(res.body).to.have.property('cards');
-            expect(res.body).to.have.property('parentBoard');
-            expect(res.body).to.have.property('title');
-            expect(res.body.title).to.be.a('string');
-            expect(res.body.title).to.equal('Title1');
-            done();
-          });
-      });
+          chai.request(server)
+            .get(`/lists/${list._id}`)
+            .end((err, res) => {
+              expect(res.status).to.be(200);
+              expect(res.body).to.be.an('object');
+              expect(res.body).to.have.property('cards');
+              expect(res.body).to.have.property('parentBoard');
+              expect(res.body).to.have.property('title');
+              expect(res.body.title).to.be.a('string');
+              expect(res.body.title).to.equal('Title1');
+              done();
+            });
+        });
 
-    // TODO: Create test to check for invalid input.
-    // TODO: Create test to check for null response.
+      // TODO: Create test to check for invalid input.
+      // TODO: Create test to check for null response.
+    });
+
+
+
   });
 
   describe('[PUT] /lists/:listID', () => {
