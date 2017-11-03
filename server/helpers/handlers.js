@@ -13,7 +13,7 @@ function validateStringInput(str) {
 }
 
 function validateId(id) {
-  return;
+  return mongoose.Types.ObjectId.isValid(id);
 }
 
 function handleInvalidInput(res) {
