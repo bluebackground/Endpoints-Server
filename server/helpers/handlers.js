@@ -50,6 +50,7 @@ function testAll(callback) {
 
 module.exports = {
   validateStringInput,
+  validateId,
   handleServerError,
   handleInvalidInput,
   testAll

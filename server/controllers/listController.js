@@ -9,6 +9,7 @@ const {
 // Support functions
 const {
   validateStringInput,
+  validateId,
   handleServerError,
   handleInvalidInput,
   testAll
@@ -22,7 +23,7 @@ const createList = (req, res) => {
     parentBoard
   } = req.body;
 
-  if (testAll(validateStringInput, title, parentBoard)) {
+  if (testAll(validateStringInput, title, parentBoard) && validateId(parentBoard)) {
     const newList = new List({
         title,
         cards,
@@ -59,7 +60,7 @@ const findList = (req, res) => {
   const {
     listID
   } = req.params;
-  if (validateStringInput(listID)) {
+  if (validateId(listID)) {
     List.findById(listID)
       .exec()
       .then((list) => {
@@ -85,7 +86,7 @@ const updateList = (req, res) => {
     title
   } = req.body;
 
-  if (validateStringInput(listID)) {
+  if (validateId(listID) && validateId(parentBoard) && validateStringInput(title)) {
     List.findByIdAndUpdate(listID, {
         parentBoard,
         cards,
@@ -115,7 +116,7 @@ const deleteList = (req, res) => {
     listID
   } = req.params;
 
-  if (validateStringInput(listID)) {
+  if (validateId(listID)) {
     List.findByIdAndRemove(listID)
       .exec()
       .then((list) => {
