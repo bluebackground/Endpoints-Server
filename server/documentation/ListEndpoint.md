@@ -55,6 +55,20 @@ Creates a list and returns a success object.
 
 **Param:** listID *(Required)*
 
+| Params      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+
+
+**Request Body**
+
+| Fields      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| title       | String | 'List Title' |
+| cards       | Array of MongoDB ObjectId | [] |
+
 `Example Request Body:`
 >```
 {
@@ -88,6 +102,19 @@ Description: Gets a list with the provided *listID*.
 
 **Param:** listID *(Required)*
 
+| Params      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+
+**Request Body**
+
+| Fields      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| title       | String | 'List Title' |
+| cards       | Array of MongoDB ObjectId | [] |
+
 `Example Response (Status 200 OK):`
 >```
 {
@@ -110,6 +137,19 @@ Description: Gets a list with the provided *listID*.
 Description: Replaces a list with listID with provided list object.
 
 **Param:** listID *(Required)*
+
+| Params      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+
+**Request Body**
+
+| Fields      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| title       | String | 'List Title' |
+| cards       | Array of MongoDB ObjectId | [] |
 
 `Example Request Body:`
 >```
@@ -144,6 +184,10 @@ Description: Replaces a list with listID with provided list object.
 Description: Removes a list with the provided listID.
 
 **Param:** listID *(Required)*
+
+| Params      | Description             | example                  |
+|-------------|-------------------------|--------------------------|
+| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
 
 `Example Response (Status 200 OK):`
 >```

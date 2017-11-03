@@ -17,21 +17,21 @@ const LIST_ROUTE = '/lists/:listID';
 
 const listsArray = [{
   title: 'Title1', // Create constants for this
-  owner: 'StringId',
+  cards: [],
   parentBoard: 'StringId'
 }, {
   title: 'Title2',
-  owner: 'StringId',
+  cards: [],
   parentBoard: 'StringId'
 }, {
   title: 'Title3',
-  owner: 'StringId',
+  cards: [],
   parentBoard: 'StringId'
 }]
 
 const newList = {
   title: "Title4",
-  owner: "StringID",
+  cards: [],
   parentBoard: "StringID"
 }
 
@@ -83,8 +83,11 @@ describe('/lists Endpoints', () => {
         .end((err, res) => {
           expect(res.status).to.be(200);
           expect(res.body).to.be.an('object');
-          expect(res.body).to.have.property('success');
-          expect(res.body.sucess).to.be(true);
+          expect(res.body).to.have.property('cards');
+          expect(res.body).to.have.property('parentBoard');
+          expect(res.body).to.have.property('title');
+          expect(res.body.title).to.be.a('string');
+          expect(res.body.title).to.equal('Title1');
           done();
         });
     });
@@ -110,11 +113,11 @@ describe('/lists Endpoints', () => {
             .end((err, res) => {
               expect(res.status).to.be(200);
               expect(res.body).to.be.an('object');
-              expect(res.body).to.have.property('owner');
+              expect(res.body).to.have.property('cards');
               expect(res.body).to.have.property('parentBoard');
               expect(res.body).to.have.property('title');
               expect(res.body.title).to.be.a('string');
-              expect(res.body.title).to.be('Title1');
+              expect(res.body.title).to.equal('Title1');
               done();
             });
         });
@@ -131,7 +134,7 @@ describe('/lists Endpoints', () => {
       const titleUpdated = 'UpdatedTitle';
       const newList = {
         title: titleUpdated,
-        owner: '',
+        cards: [],
         parentBoard: ''
       };
 
@@ -140,7 +143,7 @@ describe('/lists Endpoints', () => {
         .end((error, response) => {
           if (error) return done();
           const list = response[0];
-          newList.owner = list.owner;
+          newList.cards = list.cards;
           newList.parentBoard = list.parentBoard;
 
           chai.request(server)
@@ -149,7 +152,10 @@ describe('/lists Endpoints', () => {
             .end((err, res) => {
               expect(res.status).to.be(200);
               expect(res.body).to.be.an('object');
-              expect(res.body).to.have.property('success');
+              expect(res.body).to.have.property('cards');
+              expect(res.body).to.have.property('parentBoard');
+              expect(res.body).to.have.property('title');
+              expect(res.body.title).to.be.a('string');
               expect(res.body.title).to.be(titleUpdated);
               done();
             });
@@ -175,6 +181,13 @@ describe('/lists Endpoints', () => {
               if (err) return done();
               expect(res.status).to.be(200);
               expect(res.body).to.be.an('object');
+              expect(res.status).to.be(200);
+              expect(res.body).to.be.an('object');
+              expect(res.body).to.have.property('cards');
+              expect(res.body).to.have.property('parentBoard');
+              expect(res.body).to.have.property('title');
+              expect(res.body.title).to.be.a('string');
+              expect(res.body.title).to.equal('Title1');
 
               // TODO: Make another call to the database to check if there is one less item.
               chai.request(server)

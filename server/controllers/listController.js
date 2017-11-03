@@ -18,14 +18,14 @@ const {
 const createList = (req, res) => {
   const {
     title,
-    owner,
+    cards,
     parentBoard
   } = req.body;
 
-  if (testAll(validateStringInput, title, owner, parentBoard)) {
+  if (testAll(validateStringInput, title, parentBoard)) {
     const newPost = new Post({
         title,
-        owner,
+        cards,
         parentBoard
       }).save()
       .then((list) => {
@@ -81,14 +81,14 @@ const updateList = (req, res) => {
 
   const {
     parentBoard,
-    owner,
+    cards,
     title
   }
 
   if (validateStringInput(id)) {
     Post.findByIdAndUpdate(id, {
         parentBoard,
-        owner,
+        cards,
         title
       }, {
         new: true

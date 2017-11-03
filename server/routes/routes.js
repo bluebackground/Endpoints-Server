@@ -3,11 +3,6 @@ const listController = require('../controllers/listController.js');
 const cardController = require('../controllers/cardController.js');
 const userController = require('../controllers/userController.js');
 
-mongoose
-Express
-bodyparser
-cors
-
 module.exports = (app) => {
 
   // Boards
