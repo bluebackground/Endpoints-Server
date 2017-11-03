@@ -7,12 +7,12 @@ module.exports = (app) => {
     .route('/boards')
     .get(boardController.readBoards)
     .post(boardController.createBoard)
-    .delete(boardController.deleteBoards);
+  // .delete(boardController.deleteBoards);
 
   app
     .route('/boards/:boardID')
-    .get(boardController.readBoard)
-    .put(boardController.updateBaord)
+    .get(boardController.findBoard)
+    .put(boardController.updateBoard)
     .delete(boardController.deleteBoard);
 
 };

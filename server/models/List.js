@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ListSchema = new mongoose.Schema({
   parentBoard: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'boards',
     required: true,
   },
@@ -12,19 +12,35 @@ const ListSchema = new mongoose.Schema({
     maxlength: 120,
   },
   cards: {
-    type: [mongoose.Type.ObjectId],
+    type: [mongoose.Schema.Types.ObjectId],
     ref: 'cards',
     default: []
   }
 });
 
+// const ListSchema = new mongoose.Schema({
+//   parentBoard: {
+//     type: String,
+//     default: null
+//   },
+//   title: {
+//     type: String,
+//     required: true,
+//     maxlength: 120,
+//   },
+//   cards: {
+//     type: Array,
+//     default: []
+//   }
+// });
+
 // STATIC METHODS
-ListSchema.statics.getAllLists() {
+ListSchema.statics.getAllLists = function () {
   return;
 }
 
 // OBJECT METHODS
-ListSchema.methods.getTitle() {
+ListSchema.methods.getTitle = function () {
   return this.title;
 }
 

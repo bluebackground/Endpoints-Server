@@ -35,8 +35,8 @@ function handleServerError(res, err) {
 
 function testAll(callback) {
   const func = arguments[0];
-  const values = arguments.slice(1);
-  for (let i = 0; i < values.length; i++) {
+  const values = arguments;
+  for (let i = 1; i < values.length; i++) {
     if (!func(values[i])) return false;
   }
   return true;

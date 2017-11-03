@@ -6,11 +6,11 @@ module.exports = (app) => {
     .route('/users')
     .get(userController.readUsers)
     .post(userController.createUser)
-    .delete(userController.deleteUsers);
+  // .delete(userController.deleteUsers);
 
   app
     .route('/users/:userID')
-    .get(userController.readUser)
+    .get(userController.findUser)
     .put(userController.updateUser)
     .delete(userController.deleteUser);
 };

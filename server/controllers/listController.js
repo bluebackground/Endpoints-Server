@@ -23,17 +23,17 @@ const createList = (req, res) => {
   } = req.body;
 
   if (testAll(validateStringInput, title, parentBoard)) {
-    const newPost = new Post({
+    const newList = new List({
         title,
         cards,
         parentBoard
       }).save()
       .then((list) => {
         // res.send(JSON.stringify(list, undefined, 2));
-        // res.json(list);
-        res.json({
-          success: true
-        });
+        res.json(list);
+        // res.json({
+        //   success: true
+        // });
       })
       .catch((err) => {
         handleServerError(res, err);
@@ -57,10 +57,10 @@ const readLists = (req, res) => {
 
 const findList = (req, res) => {
   const {
-    id
+    listID
   } = req.params;
-  if (validateStringInput(id)) {
-    List.findById(id)
+  if (validateStringInput(listID)) {
+    List.findById(listID)
       .exec()
       .then((list) => {
         // res.send(JSON.stringify(list, undefined, 2));
@@ -76,17 +76,17 @@ const findList = (req, res) => {
 
 const updateList = (req, res) => {
   const {
-    id
+    listID
   } = req.params;
 
   const {
     parentBoard,
     cards,
     title
-  }
+  } = req.body;
 
-  if (validateStringInput(id)) {
-    Post.findByIdAndUpdate(id, {
+  if (validateStringInput(listID)) {
+    List.findByIdAndUpdate(listID, {
         parentBoard,
         cards,
         title
@@ -95,9 +95,11 @@ const updateList = (req, res) => {
       })
       .exec()
       .then((list) => {
-        res.json({
-          success: true
-        });
+        // res.send(JSON.stringify(list, undefined, 2));
+        res.json(list);
+        // res.json({
+        //   success: true
+        // });
       })
       .catch((err) => {
         handleServerError(res, err);
@@ -110,16 +112,18 @@ const updateList = (req, res) => {
 // TODO: remove list id from parent board
 const deleteList = (req, res) => {
   const {
-    id
+    listID
   } = req.params;
 
-  if (validateStringInput(id)) {
-    List.findByIdAndRemove(id)
+  if (validateStringInput(listID)) {
+    List.findByIdAndRemove(listID)
       .exec()
       .then((list) => {
-        res.json({
-          success: true
-        });
+        // res.send(JSON.stringify(list, undefined, 2));
+        res.json(list);
+        // res.json({
+        //   success: true
+        // });
       })
       .catch((err) => {
         handleServerError(res, err);

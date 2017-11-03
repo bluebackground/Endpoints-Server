@@ -7,7 +7,7 @@ module.exports = (app) => {
     .route('/lists')
     .get(listController.readLists)
     .post(listController.createList)
-    .delete(listController.deleteLists);
+  // .delete(listController.deleteLists);
 
   app
     .route('/lists/:listID')
