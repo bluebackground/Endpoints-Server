@@ -9,6 +9,7 @@ const {
 // Support functions
 const {
   validateStringInput,
+  validateId,
   handleServerError,
   handleInvalidInput,
   testAll
@@ -22,7 +23,7 @@ const createBoard = (req, res) => {
     description
   } = req.body;
 
-  if (testAll(validateStringInput, owner, title, description)) {
+  if (testAll(validateStringInput, title, description) && validateId(owner)) {
     const newUser = new Board({
         owner,
         title,
@@ -59,7 +60,7 @@ const findBoard = (req, res) => {
   const {
     boardID
   } = req.params;
-  if (validateStringInput(boardID)) {
+  if (validateId(boardID)) {
     Board.findById(boardID)
       .exec()
       .then((board) => {
@@ -85,7 +86,7 @@ const updateBoard = (req, res) => {
     description
   } = req.body;
 
-  if (validateStringInput(boardID)) {
+  if (validateId(boardID) && testAll(validateStringInput, title, description)) {
     Board.findByIdAndUpdate(boardID, {
         owner,
         title,
@@ -115,7 +116,7 @@ const deleteBoard = (req, res) => {
     boardID
   } = req.params;
 
-  if (validateStringInput(boardID)) {
+  if (validateId(boardID)) {
     Board.findByIdAndRemove(boardID)
       .exec()
       .then((board) => {

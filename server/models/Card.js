@@ -25,6 +25,28 @@ const CardSchema = new mongoose.Schema({
   }
 });
 
+// STATIC METHODS
+CardSchema.statics.getAllCards = function () {
+  return;
+}
+
+// OBJECT METHODS
+CardSchema.methods.getTitle = function () {
+  return this.title;
+}
+
+CardSchema.methods.getDescription = function () {
+  return this.description;
+}
+
+CardSchema.methods.getPriority = function () {
+  return this.priority;
+}
+
+CardSchema.methods.getDueDate = function () {
+  return this.dueDate;
+}
+
 const Card = mongoose.model('Card', CardSchema, 'cards');
 
 module.exports = Card;

@@ -26,14 +26,14 @@ Get's an array of lists with a default limit of 50.
 >```
 [
   {
-    _id: ObjectID('StringID'),
-    parentBoard: ObjectID('stringID'),
+    _id: '59fce17678d3f02559ae7960',
+    parentBoard: '59fcd2f0b6090b1f441093eb'),
     title: "CardTitle",
     cards: [ObjectID('stringID')]
   },
   {
-    _id: ObjectID('StringID'),
-    parentBoard: ObjectID('stringID'),
+    _id: '59fce17678d3f02559ae7960',
+    parentBoard: '59fcd2f0b6090b1f441093eb'),
     title: "CardTitle",
     cards: [ObjectID('stringID')]
   }
@@ -57,23 +57,23 @@ Creates a list and returns a success object.
 
 | Params      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| listID      | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
 
 
 **Request Body**
 
 | Fields      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
-| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| _id         | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
+| parentBoard | MongoDB ObjectId String |'59fcd2f0b6090b1f441093eb'|
 | title       | String | 'List Title' |
 | cards       | Array of MongoDB ObjectId | [] |
 
 `Example Request Body:`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
   title: "CardTitle",
   cards: [ObjectID('stringID')]
 }
@@ -82,8 +82,8 @@ Creates a list and returns a success object.
 `Example Response (Status 200 OK):`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
   title: "CardTitle",
   cards: [ObjectID('stringID')]
 }
@@ -104,22 +104,22 @@ Description: Gets a list with the provided *listID*.
 
 | Params      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| listID      | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
 
 **Request Body**
 
 | Fields      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
-| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| _id         | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
+| parentBoard | MongoDB ObjectId String |'59fcd2f0b6090b1f441093eb'|
 | title       | String | 'List Title' |
 | cards       | Array of MongoDB ObjectId | [] |
 
 `Example Response (Status 200 OK):`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
   title: "CardTitle",
   cards: [ObjectID('stringID')]
 }
@@ -140,23 +140,23 @@ Description: Replaces a list with listID with provided list object.
 
 | Params      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| listID      | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
 
 **Request Body**
 
 | Fields      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| _id         | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
-| parentBoard | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| _id         | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
+| parentBoard | MongoDB ObjectId String |'59fcd2f0b6090b1f441093eb'|
 | title       | String | 'List Title' |
 | cards       | Array of MongoDB ObjectId | [] |
 
 `Example Request Body:`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
-  title: "CardTitle",
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
+  title: "CardTitle - Updated",
   cards: [ObjectID('stringID')]
 }
 ```
@@ -164,9 +164,9 @@ Description: Replaces a list with listID with provided list object.
 `Example Response (Status 200 OK):`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
-  title: "CardTitle",
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
+  title: "CardTitle - Updated",
   cards: [ObjectID('stringID')]
 }
 ```
@@ -187,13 +187,13 @@ Description: Removes a list with the provided listID.
 
 | Params      | Description             | example                  |
 |-------------|-------------------------|--------------------------|
-| listID      | MongoDB ObjectId String | 'asdjnfasjdfalsdf'       |
+| listID      | MongoDB ObjectId String |'59fce17678d3f02559ae7960'|
 
 `Example Response (Status 200 OK):`
 >```
 {
-  _id: ObjectID('StringID'),
-  parentBoard: ObjectID('stringID'),
+  _id: '59fce17678d3f02559ae7960',
+  parentBoard: '59fcd2f0b6090b1f441093eb'),
   title: "CardTitle",
   cards: [ObjectID('stringID')]
 }

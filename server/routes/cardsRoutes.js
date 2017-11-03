@@ -7,7 +7,7 @@ module.exports = (app) => {
     .route('/cards')
     .get(cardController.readCards)
     .post(cardController.createCard)
-    .delete(cardController.deleteCards);
+  // .delete(cardController.deleteCards);
 
   app
     .route('/cards/:cardID')

@@ -44,6 +44,10 @@ ListSchema.methods.getTitle = function () {
   return this.title;
 }
 
+ListSchema.methods.getCards = function () {
+  return this.cards;
+}
+
 const List = mongoose.model('List', ListSchema, 'lists');
 
 module.exports = List;

@@ -9,6 +9,7 @@ const {
 // Support functions
 const {
   validateStringInput,
+  validateId,
   handleServerError,
   handleInvalidInput,
   testAll

@@ -28,6 +28,20 @@ const BoardSchema = new mongoose.Schema({
   }
 });
 
+// STATIC METHODS
+BoardSchema.statics.getAllBoards = function () {
+  return;
+}
+
+// OBJECT METHODS
+BoardSchema.methods.getTitle = function () {
+  return this.title;
+}
+
+BoardSchema.methods.getDescription = function () {
+  return this.desription;
+}
+
 const Board = mongoose.model('Board', BoardSchema, 'boards');
 
 module.exports = Board;
