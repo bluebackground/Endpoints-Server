@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "mocha test/*.test.js",
+    "test": "mocha server/tests/listsEndpoint.test.js",
     "test-watch": "nodemon --exec npm run test",
     "start": "node server.js"
   },
