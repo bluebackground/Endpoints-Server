@@ -1,7 +1,9 @@
 {
   "scripts": {
-    "test": "mocha server/tests/listsEndpoint.test.js",
-    "test-watch": "nodemon --exec npm run test",
+    "test": "mocha server/tests/endpoint-lists.test.js",
+    "test-lists": "export NODE_ENV=test || set \"NODE_ENV=test\" && mocha --exit server/tests/endpoint-lists.test.js",
+    "test-lists2": "export NODE_ENV=test || set \"NODE_ENV=test\" && mocha --exit server/tests/endpoint-lists2.test.js",
+    "test-watch": "nodemon --exec 'yarn test'",
     "start": "node server.js"
   },
   "dependencies": {

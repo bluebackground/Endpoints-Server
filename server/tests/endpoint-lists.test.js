@@ -1,11 +1,13 @@
+const mongoose = require('mongoose');
+
 const mocha = require('mocha');
 const chai = require('chai');
 const expect = chai.expect;
 const chaiHTTP = require('chai-http');
 
-const server = require('../server.js');
-
 chai.use(chaiHTTP);
+
+const server = require('../server.js');
 
 const LISTS_ROUTE = '/lists';
 const LIST_ROUTE = '/lists/:listID';
@@ -16,26 +18,42 @@ const LIST_ROUTE = '/lists/:listID';
 // TODO: Clear database after tests.
 
 const listsArray = [{
+  _id: new mongoose.Types.ObjectId(),
   title: 'Title1', // Create constants for this
   cards: [],
   parentBoard: '59fcd2f0b6090b1f441093eb'
 }, {
+  _id: new mongoose.Types.ObjectId(),
   title: 'Title2',
   cards: [],
   parentBoard: '59fcd2f0b6090b1f441093eb'
 }, {
+  _id: new mongoose.Types.ObjectId(),
   title: 'Title3',
   cards: [],
   parentBoard: '59fcd2f0b6090b1f441093eb'
 }]
 
 const newList = {
+  _id: new mongoose.Types.ObjectId(),
   title: "Title4",
   cards: [],
   parentBoard: "59fcd2f0b6090b1f441093eb"
 }
 
+// console.log(new mongoose.Types.ObjectId());
+
+// This is the string that we want to use as a parameter
+// console.log(listsArray[0]._id.toHexString());
+
 describe('API Endpoints for /lists', () => {
+  // before(async() => {
+  //
+  // });
+
+  // after(async() => {
+  //
+  // });
 
   // BEFORE EACH
   // beforeEach((done) => {
@@ -60,7 +78,7 @@ describe('API Endpoints for /lists', () => {
 
   // ENDPOINT TESTS
   describe('[GET] /lists', () => {
-    it('should return list objects as an array', (done) => {
+    it.skip('should return list objects as an array', (done) => {
       chai.request(server)
         .get('/lists')
         .end((err, res) => {
@@ -105,7 +123,7 @@ describe('API Endpoints for /lists', () => {
         .get('/lists')
         .end((error, response) => {
           if (error) return done();
-          const list = response[0];
+          const list = response.body[0];
 
           chai.request(server)
             .get(`/lists/${list._id}`)
@@ -124,9 +142,6 @@ describe('API Endpoints for /lists', () => {
       // TODO: Create test to check for invalid input.
       // TODO: Create test to check for null response.
     });
-
-
-
   });
 
   describe('[PUT] /lists/:listID', () => {
@@ -160,15 +175,13 @@ describe('API Endpoints for /lists', () => {
               done();
             });
         });
-
     });
-
     // TODO: Create test to see if the object exists.
     // TODO: Create test to check for invalid input.
   });
 
   describe('[DELETE] /lists/:listID', () => {
-    it.skip('should remove a SINGLE list on /lists/:listID DELETE', () => {
+    it.skip('should remove a SINGLE list on /lists/:listID DELETE', (done) => {
       chai.request(server)
         .get('/lists')
         .end((error, response) => {
@@ -195,6 +208,7 @@ describe('API Endpoints for /lists', () => {
                 .end((er, re) => {
                   if (er) return done();
                   expect(re.body.length).to.equal(2);
+                  done();
                 });
             });
         });

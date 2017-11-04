@@ -11,7 +11,7 @@ module.exports = (app) => {
 
   app
     .route('/cards/:cardID')
-    .get(cardController.readCard)
+    .get(cardController.findCard)
     .put(cardController.updateCard)
     .delete(cardController.deleteCard);
 

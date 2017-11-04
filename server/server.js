@@ -17,12 +17,22 @@ const connect = mongoose.connect(DB_URL, {
   useMongoClient: true
 });
 
-connect.then(() => {
+if (process.env.NODE_ENV === 'test') {
   routes(server);
-  server.listen(SERVER_PORT);
-  console.log(`Server listening on port ${SERVER_PORT}`);
-}, (err) => {
-  console.log(`Error in connection to DB`);
-});
+  server.listen(SERVER_PORT, () => {
+    console.log(`Note: Server-Test does not check if mongod is running.`)
+    console.log(`Note: Check to make sure MongoDB is running manually.`)
+    console.log(`Status: Server started on port ${SERVER_PORT}...`);
+  });
+} else {
+  connect.then(() => {
+    routes(server);
+    server.listen(SERVER_PORT);
+    console.log(`Status: Server connecting to database URI: ${DB_URL}`);
+    console.log(`Status: Server started on port ${SERVER_PORT}`);
+  }, (err) => {
+    console.log(`Status: Error in connection to database URI: ${DB_URL}`);
+  });
+}
 
 module.exports = server;
